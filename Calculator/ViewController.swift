@@ -66,8 +66,11 @@ class ViewController: UIViewController {
             
             // only perform the operation if there is no overflow
             if String(result).count <= numberOfDigits {
+                // remove last entry
                 stack.remove(at: stack.count - 1)
+                // update the stack
                 stack[stack.count - 1] = result
+                // update the display
                 displayLabel.text! = String(result)
                 readyForNewEntry = true
             }
