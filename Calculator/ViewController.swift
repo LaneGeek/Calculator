@@ -55,7 +55,8 @@ class ViewController: UIViewController {
             
             switch (operation) {
             case "÷":
-                result = operand1 / operand2
+                // dividing by zero is not allowed
+                result = operand2 == 0 ? 0 : operand1 / operand2
             case "×":
                 result = operand1 * operand2
             case "-":
@@ -64,8 +65,8 @@ class ViewController: UIViewController {
                 result = operand1 + operand2
             }
             
-            // only perform the operation if there is no overflow
-            if String(result).count <= numberOfDigits {
+            // only perform the operation if there is no overflow and if not dividing by zero
+            if String(result).count <= numberOfDigits && !(operation == "÷" && operand2 == 0) {
                 // remove last entry
                 stack.remove(at: stack.count - 1)
                 // update the stack
