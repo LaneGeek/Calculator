@@ -199,11 +199,14 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2qs-kh-LcC">
                                                 <rect key="frame" x="187.66666666666666" y="0.0" width="92.666666666666657" height="154.66666666666666"/>
-                                                <color key="backgroundColor" red="0.60390430689999997" green="0.109705992" blue="0.12143329529999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <color key="backgroundColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
-                                                <state key="normal" title="😃">
+                                                <state key="normal" title="Drp">
                                                     <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="dropButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="60p-A4-M6X"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sxQ-LV-Ofz">
                                                 <rect key="frame" x="281.33333333333331" y="0.0" width="92.666666666666686" height="154.66666666666666"/>

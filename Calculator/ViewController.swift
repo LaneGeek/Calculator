@@ -4,7 +4,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var displayLabel: UILabel!
     
-    let numberOfDigits = 8
+    let numberOfDigits = 12
     var stack = [Int]()
     var stackEntryJustMade = false
     
@@ -36,6 +36,18 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func dropButtonClicked(_ sender: UIButton) {
+        if stack.count != 0 {
+            stack.remove(at: stack.count - 1)
+            stackEntryJustMade = true
+            if stack.count != 0 {
+                displayLabel.text! = String(stack.last!)
+            } else {
+                displayLabel.text! = "Stack Empty"
+            }
+        }
+    }
+    
     @IBAction func operationButtonClicked(_ sender: UIButton) {
         if stack.count != 0 {
             let operand1 = stack.last!
@@ -55,9 +67,12 @@ class ViewController: UIViewController {
                 result = operand1 + operand2
             }
             
-            stack[stack.count - 1] = result
-            displayLabel.text! = String(result)
-            stackEntryJustMade = true
+            // only perform the operation if there is no overflow
+            if String(result).count <= numberOfDigits {
+                stack.remove(at: stack.count - 1)
+                displayLabel.text! = String(result)
+                stackEntryJustMade = true
+            }
         }
     }
 }
