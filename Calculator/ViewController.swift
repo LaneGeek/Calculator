@@ -37,7 +37,27 @@ class ViewController: UIViewController {
     }
     
     @IBAction func operationButtonClicked(_ sender: UIButton) {
-        
+        if stack.count != 0 {
+            let operand1 = stack.last!
+            let operand2 = Int(displayLabel.text!)!
+            let operation = sender.titleLabel!.text!
+            
+            var result: Int
+            
+            switch (operation) {
+            case "÷":
+                result = operand1 / operand2
+            case "×":
+                result = operand1 * operand2
+            case "-":
+                result = operand1 - operand2
+            default:
+                result = operand1 + operand2
+            }
+            
+            stack[stack.count - 1] = result
+            displayLabel.text! = String(result)
+            stackEntryJustMade = true
+        }
     }
-    
 }
