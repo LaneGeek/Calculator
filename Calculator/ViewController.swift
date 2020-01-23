@@ -16,11 +16,13 @@ class ViewController: UIViewController {
         if readyForNewEntry {
             readyForNewEntry = false
             displayLabel.text = sender.titleLabel!.text
+            // add this number to the stack
             stack.append(Int(displayLabel.text!)!)
         } else if displayLabel.text!.count < numberOfDigits {
             displayLabel.text! += sender.titleLabel!.text!
             // eliminate leading zeros
             displayLabel.text! = String(Int(displayLabel.text!)!)
+            // update the latest entry to the stack
             stack[stack.count - 1] = Int(displayLabel.text!)!
         }
     }
@@ -30,21 +32,23 @@ class ViewController: UIViewController {
     }
     
     @IBAction func dropButtonClicked(_ sender: UIButton) {
+        // check if stack is not empty
         if stack.count != 0 {
+            // remove last entry
             stack.remove(at: stack.count - 1)
             readyForNewEntry = true
-            if stack.count != 0 {
-                displayLabel.text! = String(stack.last!)
-            } else {
-                displayLabel.text! = "Stack Empty"
-            }
+            // update the display
+            displayLabel.text! = stack.count == 0 ? "Stack Empty" : String(stack.last!)
         }
     }
     
     @IBAction func operationButtonClicked(_ sender: UIButton) {
+        // operation can only be performed if stack has at least 2 numbers
         if stack.count > 1 {
             let operand1 = stack[stack.count - 2]
             let operand2 = stack[stack.count - 1]
+            
+            // get the operation type from the button
             let operation = sender.titleLabel!.text!
             
             var result: Int
