@@ -1,20 +1,33 @@
-//
-//  ViewController.swift
-//  Calculator
-//
-//  Created by Wolfgang on 1/22/20.
-//  Copyright © 2020 Wolfgang's Software Factory. All rights reserved.
-//
-
 import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var displayLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
-
-
+    
+    @IBAction func numberButtonClicked(_ sender: UIButton) {
+        
+        
+        
+        
+    }
+    @IBAction func zeroButtonClicked(_ sender: UIButton) {
+        
+        
+    }
+    
+    @IBAction func enterButtonClicked(_ sender: UIButton) {
+    }
+    
+    
+    @IBAction func operationButtonClicked(_ sender: UIButton) {
+        
+        
+        
+    }
+    
 }
 
