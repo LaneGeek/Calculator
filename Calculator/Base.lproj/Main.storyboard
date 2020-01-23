@@ -194,7 +194,7 @@
                                                     <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="zeroButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DwJ-Ox-LHj"/>
+                                                    <action selector="numberButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OLL-ra-HR2"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2qs-kh-LcC">

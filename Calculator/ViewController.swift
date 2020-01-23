@@ -6,40 +6,33 @@ class ViewController: UIViewController {
     
     let numberOfDigits = 12
     var stack = [Int]()
-    var stackEntryJustMade = false
+    var readyForNewEntry = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     @IBAction func numberButtonClicked(_ sender: UIButton) {
-        if displayLabel.text == "Stack Empty" || stackEntryJustMade {
+        if readyForNewEntry {
+            readyForNewEntry = false
             displayLabel.text = sender.titleLabel!.text
-            stackEntryJustMade = false
-        } else if displayLabel.text!.count < 8 {
+            stack.append(Int(displayLabel.text!)!)
+        } else if displayLabel.text!.count < numberOfDigits {
             displayLabel.text! += sender.titleLabel!.text!
-        }
-    }
-    
-    @IBAction func zeroButtonClicked(_ sender: UIButton) {
-        if !stackEntryJustMade {
-            if displayLabel.text != "Stack Empty" && displayLabel.text!.count < 8 {
-                displayLabel.text! += "0"
-            }
+            // eliminate leading zeros
+            displayLabel.text! = String(Int(displayLabel.text!)!)
+            stack[stack.count - 1] = Int(displayLabel.text!)!
         }
     }
     
     @IBAction func enterButtonClicked(_ sender: UIButton) {
-        if displayLabel.text != "Stack Empty" {
-            stack.append(Int(displayLabel.text!)!)
-            stackEntryJustMade = true
-        }
+        readyForNewEntry = true
     }
     
     @IBAction func dropButtonClicked(_ sender: UIButton) {
         if stack.count != 0 {
             stack.remove(at: stack.count - 1)
-            stackEntryJustMade = true
+            readyForNewEntry = true
             if stack.count != 0 {
                 displayLabel.text! = String(stack.last!)
             } else {
@@ -49,9 +42,9 @@ class ViewController: UIViewController {
     }
     
     @IBAction func operationButtonClicked(_ sender: UIButton) {
-        if stack.count != 0 {
-            let operand1 = stack.last!
-            let operand2 = Int(displayLabel.text!)!
+        if stack.count > 1 {
+            let operand1 = stack[stack.count - 2]
+            let operand2 = stack[stack.count - 1]
             let operation = sender.titleLabel!.text!
             
             var result: Int
@@ -70,8 +63,9 @@ class ViewController: UIViewController {
             // only perform the operation if there is no overflow
             if String(result).count <= numberOfDigits {
                 stack.remove(at: stack.count - 1)
+                stack[stack.count - 1] = result
                 displayLabel.text! = String(result)
-                stackEntryJustMade = true
+                readyForNewEntry = true
             }
         }
     }
